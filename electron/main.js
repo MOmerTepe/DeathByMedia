@@ -9,25 +9,34 @@ function getResourcePath(subpath) {
   return path.join(__dirname, '..', subpath);
 }
 
+function asarUnpack(p) {
+  if (p && p.includes('app.asar')) return p.replace('app.asar', 'app.asar.unpacked');
+  return p;
+}
+
 function getFfmpegPath() {
-  // Check bundled in bin/ folder first
   const ext = process.platform === 'win32' ? '.exe' : '';
   const bundled = getResourcePath('bin/ffmpeg' + ext);
-  if (require('fs').existsSync(bundled)) return bundled;
+  if (fs.existsSync(bundled)) return bundled;
 
-  // Try ffmpeg-static package
-  try { return require('ffmpeg-static'); } catch {}
+  // Try ffmpeg-static package (resolve asar path to unpacked)
+  try {
+    const p = asarUnpack(require('ffmpeg-static'));
+    if (p && fs.existsSync(p)) return p;
+  } catch {}
 
-  // Fallback to system PATH
   return 'ffmpeg';
 }
 
 function getFfprobePath() {
   const ext = process.platform === 'win32' ? '.exe' : '';
   const bundled = getResourcePath('bin/ffprobe' + ext);
-  if (require('fs').existsSync(bundled)) return bundled;
+  if (fs.existsSync(bundled)) return bundled;
 
-  try { return require('ffprobe-static').path; } catch {}
+  try {
+    const p = asarUnpack(require('ffprobe-static').path);
+    if (p && fs.existsSync(p)) return p;
+  } catch {}
 
   return 'ffprobe';
 }
@@ -193,8 +202,10 @@ ipcMain.on('ytdl:start', (event, job) => {
     args.push('--merge-output-format', 'mp4');
   } else if (job.format === 'webm') {
     args.push('-f', 'bestvideo[ext=webm]+bestaudio[ext=webm]/best[ext=webm]');
+    args.push('--merge-output-format', 'webm');
   } else {
     args.push('-f', 'bestvideo+bestaudio/best');
+    args.push('--merge-output-format', 'mkv');
   }
 
   args.push('--ffmpeg-location', path.dirname(getFfmpegPath()));

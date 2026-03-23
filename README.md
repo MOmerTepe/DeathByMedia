@@ -41,35 +41,7 @@ Output: `dist/`
 - **ffmpeg-static** — Media processing
 - **yt-dlp** — YouTube downloads
 
-## Project Structure
 
-```
-media-toolkit/
-├── electron/
-│   ├── main.js          # Main process (IPC, ffmpeg, yt-dlp)
-│   └── preload.js       # Context bridge
-├── src/
-│   ├── main.js          # Svelte entry
-│   ├── App.svelte       # Root component
-│   ├── global.css       # Theme & base styles
-│   └── lib/
-│       ├── stores/app.js
-│       └── components/
-│           ├── Titlebar.svelte
-│           ├── Sidebar.svelte
-│           ├── DropZone.svelte
-│           ├── Toasts.svelte
-│           ├── ImageTab.svelte
-│           ├── VideoTab.svelte
-│           ├── AudioTab.svelte
-│           ├── YoutubeTab.svelte
-│           └── QueueTab.svelte
-├── build/               # Vite output (generated)
-├── bin/                 # yt-dlp binary (optional)
-├── package.json
-├── vite.config.mjs
-└── svelte.config.mjs
-```
 
 ## License
 

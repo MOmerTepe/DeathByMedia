@@ -1,0 +1,8 @@
+node_modules/
+dist/
+build/
+bin/yt-dlp*
+bin/ffmpeg*
+bin/ffprobe*
+.idea/
+*.log

@@ -1,0 +1,144 @@
+/* ─── Reset ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #000000;
+  --bg: #050505;
+  --bg-card: #0a0a0a;
+  --bg-input: #0e0e0e;
+  --bg-hover: #141414;
+  --bg-active: #1a1a1a;
+  --border: #1e1e1e;
+  --border-light: #2a2a2a;
+  --text: #f0f0f0;
+  --text-secondary: #888888;
+  --text-muted: #555555;
+  --white: #ffffff;
+  --accent: #ffffff;
+  --accent-dim: rgba(255, 255, 255, 0.06);
+  --success: #a0a0a0;
+  --error: #cc4444;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: 120ms ease;
+  --font: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+html, body, #app {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ─── Typography ──────────────────────────────────────────────────── */
+h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.4px; margin-bottom: 2px; }
+.subtitle { color: var(--text-secondary); font-size: 13px; margin-bottom: 24px; }
+label { display: block; font-size: 11px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.6px; }
+
+/* ─── Inputs ──────────────────────────────────────────────────────── */
+select, input[type="text"], input[type="number"], input[type="url"] {
+  width: 100%;
+  height: 36px;
+  padding: 0 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+select:focus, input:focus { border-color: var(--text-muted); }
+
+select {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23555' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+select option { background: var(--bg-card); color: var(--text); }
+
+input[type="range"] {
+  width: 100%;
+  height: 3px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  margin-top: 6px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────── */
+.btn {
+  height: 36px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background: var(--white);
+  color: var(--black);
+}
+.btn-primary:hover:not(:disabled) { opacity: 0.85; }
+.btn-primary:disabled { opacity: 0.25; cursor: not-allowed; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover { background: var(--bg-hover); color: var(--text); border-color: var(--border-light); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  padding: 0 12px;
+}
+.btn-ghost:hover { color: var(--text); }
+
+.btn-danger {
+  background: rgba(204, 68, 68, 0.1);
+  color: var(--error);
+  border: 1px solid rgba(204, 68, 68, 0.2);
+}
+.btn-danger:hover { background: rgba(204, 68, 68, 0.18); }
+
+.btn-sm { height: 32px; padding: 0 14px; font-size: 12px; }

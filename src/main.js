@@ -1,13 +1,15 @@
 import App from './App.svelte';
 import './global.css';
 
-// Apply persisted theme before first paint to avoid a flash of the wrong theme
-try {
-  const saved = localStorage.getItem('dbm-lg-theme');
-  document.documentElement.dataset.theme = saved === 'light' ? 'light' : 'dark';
-} catch {
-  document.documentElement.dataset.theme = 'dark';
-}
+// Follow the OS light/dark setting. Chromium's prefers-color-scheme tracks
+// the system theme (nativeTheme defaults to 'system'), so the app matches
+// the desktop with no in-app toggle.
+const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const applyTheme = () => {
+  document.documentElement.dataset.theme = darkQuery.matches ? 'dark' : 'light';
+};
+applyTheme();
+darkQuery.addEventListener('change', applyTheme);
 
 // When the window is drawn with the acrylic material, switch the backdrop
 // to a translucent tint so what's behind the window shows through

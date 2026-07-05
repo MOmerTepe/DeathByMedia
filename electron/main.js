@@ -72,7 +72,7 @@ function createWindow() {
     titleBarStyle: 'hidden',
     ...(acrylic
       ? { backgroundMaterial: 'acrylic' }
-      : { backgroundColor: '#222226' }),
+      : { backgroundColor: nativeTheme.shouldUseDarkColors ? '#222226' : '#eff1f6' }),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -98,11 +98,6 @@ ipcMain.on('window:maximize', () => {
   else mainWindow?.maximize();
 });
 ipcMain.on('window:close', () => mainWindow?.close());
-
-// Keep the OS-rendered acrylic base tint in sync with the app theme
-ipcMain.on('theme:set', (_, theme) => {
-  nativeTheme.themeSource = theme === 'light' ? 'light' : 'dark';
-});
 
 // ─── Dialogs ─────────────────────────────────────────────────────────
 ipcMain.handle('dialog:openFiles', async (_, options) => {

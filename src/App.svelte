@@ -8,9 +8,7 @@
   import YoutubeTab from './lib/components/YoutubeTab.svelte';
   import QueueTab from './lib/components/QueueTab.svelte';
   import Toasts from './lib/components/Toasts.svelte';
-  import { activeTab, theme } from './lib/stores/app.js';
-
-  $: if (typeof document !== 'undefined') document.documentElement.dataset.theme = $theme;
+  import { activeTab } from './lib/stores/app.js';
 
   onMount(() => {
     const preventWindowDrop = (e) => {

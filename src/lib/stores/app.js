@@ -4,19 +4,6 @@ export const activeTab = writable('image');
 export const queue = writable([]);
 export const toasts = writable([]);
 
-const savedTheme = (() => {
-  try { return localStorage.getItem('dbm-lg-theme'); } catch { return null; }
-})();
-export const theme = writable(savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'dark');
-theme.subscribe(t => {
-  try { localStorage.setItem('dbm-lg-theme', t); } catch {}
-  window.api?.setTheme?.(t);
-});
-
-export function toggleTheme() {
-  theme.update(t => (t === 'dark' ? 'light' : 'dark'));
-}
-
 export const queuePending = derived(queue, $q => $q.filter(j => j.status === 'pending' || j.status === 'running').length);
 
 let toastId = 0;

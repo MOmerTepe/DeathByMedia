@@ -2,7 +2,7 @@
 
 A Windows desktop app for media conversion and YouTube downloading. Built with Svelte and Electron.
 
-The interface follows the Windows 11 design language: a translucent acrylic window that blurs whatever is behind it (Windows 11 22H2 or later; solid fallback elsewhere), frosted glass surfaces, and a light/dark theme toggle that remembers your choice.
+The interface follows the Windows 11 design language: a translucent acrylic window that blurs whatever is behind it (Windows 11 22H2 or later; solid fallback elsewhere), frosted glass surfaces, and light/dark styling that follows the system theme.
 
 ## Features
 
@@ -12,7 +12,7 @@ The interface follows the Windows 11 design language: a translucent acrylic wind
 - **Audio extraction** — MP3, FLAC, WAV, AAC, OGG, M4A with bitrate and sample rate options
 - **YouTube downloader** — paste a link, fetch info, download video or audio up to 4K
 - **Batch queue** — queue jobs from any tab and process them sequentially
-- **Light / dark theme** — toggle in the titlebar, persisted between sessions
+- **Light / dark theme** — automatically follows the Windows system theme
 
 ## Requirements
 

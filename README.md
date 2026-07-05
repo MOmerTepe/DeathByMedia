@@ -8,7 +8,7 @@ The interface follows the Windows 11 design language: a translucent acrylic wind
 
 - **Image conversion** — PNG, JPG, WEBP, BMP, TIFF, GIF, ICO with quality and resize options
 - **Video conversion** — MP4, MKV, AVI, MOV, WEBM, FLV with codec, CRF, preset, resolution, and frame rate control
-- **Hardware-accelerated encoding** — NVIDIA NVENC, Intel QuickSync, and AMD AMF for H.264/H.265. Available encoders are detected at startup and the fastest one is selected by default; software (x264/x265) remains available
+- **Hardware-accelerated encoding** — NVIDIA NVENC, Intel QuickSync, and AMD AMF for H.264/H.265 (I HAVE NO CLUE IF INTEL AND AMD WORK I CANT TEST IT). Available encoders are detected at startup and the fastest one is selected by default; software (x264/x265) remains available
 - **Audio extraction** — MP3, FLAC, WAV, AAC, OGG, M4A with bitrate and sample rate options
 - **YouTube downloader** — paste a link, fetch info, download video or audio up to 4K
 - **Batch queue** — queue jobs from any tab and process them sequentially
